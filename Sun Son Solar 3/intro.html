@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101b18">
+    <meta name="description" content="Discover a brighter, more independent energy future with Sun Son Solar.">
+    <title>Sun Son Solar | A Brighter Kind of Energy</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
+</head>
+<body class="home-page">
+
+    <!--Top navigation bar (floating pill, links grouped on the right) -->
+    <nav class="navbar">
+        <div class="logo-group">
+            <a class="brand" href="intro.html" aria-label="Sun Son Solar home">
+                <img class="brand-mark" src="sunson-logo.svg" alt="">
+                <span class="brand-name">SUN SON <b>SOLAR</b></span>
+            </a>
+        </div>
+
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li class="dropdown" id="products-dropdown">
+                    <a onclick="toggleDropdown(event, 'products-dropdown')">Products</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#panels">Panels</a></li>
+                            <li><a href="#inverter">Inverter</a></li>
+                            <li><a href="#batteries">Batteries</a></li>
+                        </ul>
+                </li>
+
+                <li class="dropdown" id="services-dropdown">
+                    <a onclick="toggleDropdown(event, 'services-dropdown')">Services</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#consultation">Consultation</a></li>
+                            <li><a href="#designing">Designing</a></li>
+                            <li><a href="#permitting">Permitting</a></li>
+                            <li><a href="#installation">Installation</a></li>
+                            <li><a href="#maintenance">Maintenance</a></li>
+                            <li><a href="#repair">Repair</a></li>
+                            <li><a href="#monitoring">Monitoring</a></li>
+                        </ul>
+                </li>
+            </ul>
+
+            <div class="nav-buttons">
+                <a href="account.html?mode=signin" class="btn btn-outline">Sign in</a>
+                <a href="account.html?mode=signup" class="btn btn-solid">Get started <span aria-hidden="true">↗</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <!--Main section-->
+    <section class="hero" aria-labelledby="hero-title">
+        <video class="hero-video" autoplay muted loop playsinline poster="Carousel/Carousel%201.png" aria-hidden="true">
+            <source src="hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-inner">
+            <div class="hero-copy">
+                <span class="eyebrow"><span class="eyebrow-dot"></span> SUNSHINE, MADE USEFUL</span>
+                <h1 id="hero-title">Your roof has a <em>brighter</em> side.</h1>
+                <p>Make clean energy feel closer to home. Explore solar solutions designed around the way you live.</p>
+                <div class="hero-actions">
+                    <a class="button button-lime" href="#solutions">Explore solar <span aria-hidden="true">↗</span></a>
+                    <a class="text-link" href="#our-story">Meet Sun Son Solar <span aria-hidden="true">↓</span></a>
+                </div>
+                <div class="hero-note"><span class="note-line"></span> A more thoughtful way to power what matters.</div>
+            </div>
+            <div class="video-float" aria-label="Sun Son Solar video">
+                <div class="video-float-bar"><span class="video-live"><i></i> DISCOVER SOLAR</span><a href="https://youtu.be/xKxrkht7CpY" target="_blank" rel="noopener noreferrer" aria-label="Open video on YouTube">↗</a></div>
+                <div class="video-frame">
+                    <iframe src="https://www.youtube-nocookie.com/embed/xKxrkht7CpY?rel=0" title="Discover solar energy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="hero-index"><span>01</span><span class="index-rule"></span><span>04</span></div>
+    </section>
+
+    <section class="showcase" aria-labelledby="showcase-title">
+        <div class="section-heading showcase-heading">
+            <div><span class="eyebrow eyebrow-dark">A CLOSER LOOK</span><h2 id="showcase-title">Good energy.<br><em>Beautifully considered.</em></h2></div>
+            <div class="carousel-controls" aria-label="Carousel controls">
+                <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Previous image">←</button>
+                <button class="carousel-arrow" type="button" data-carousel-next aria-label="Next image">→</button>
+            </div>
+        </div>
+        <div class="carousel-viewport" aria-roledescription="carousel" aria-label="Sun Son Solar gallery">
+            <div class="carousel-track" aria-live="polite">
+                <figure class="carousel-slide is-active" aria-label="1 of 4" aria-hidden="false"><img src="Carousel/Carousel%201.png" alt="Solar panels capturing sunlight across a rooftop"><figcaption><span>01</span> Energy, in its element</figcaption></figure>
+                <figure class="carousel-slide" aria-label="2 of 4" aria-hidden="true"><img src="Carousel/Carousel%202.jpg" alt="A solar installation under a wide open sky"><figcaption><span>02</span> Designed for the long view</figcaption></figure>
+                <figure class="carousel-slide" aria-label="3 of 4" aria-hidden="true"><img src="Carousel/Carousel%203.jpg" alt="Sunlight meeting a clean energy landscape"><figcaption><span>03</span> A brighter everyday</figcaption></figure>
+                <figure class="carousel-slide" aria-label="4 of 4" aria-hidden="true"><img src="Carousel/Carousel%204.webp" alt="Solar panels turning daylight into dependable power"><figcaption><span>04</span> Made to move forward</figcaption></figure>
+            </div>
+        </div>
+        <div class="carousel-bottom"><div class="carousel-dots" role="group" aria-label="Choose gallery image"><button class="carousel-dot is-active" type="button" aria-label="Show image 1" aria-current="true"></button><button class="carousel-dot" type="button" aria-label="Show image 2"></button><button class="carousel-dot" type="button" aria-label="Show image 3"></button><button class="carousel-dot" type="button" aria-label="Show image 4"></button></div><span class="carousel-count"><b data-carousel-count>01</b> / 04</span></div>
+    </section>
+
+    <main id="solutions" class="solutions-intro">
+        <span class="eyebrow eyebrow-dark">THE BUILDING BLOCKS</span>
+        <h2>Energy that works<br>with <em>your life.</em></h2>
+        <p>From the panels above your home to the people who bring them to life, thoughtful solar starts with the right pieces.</p>
+    </main>
+
+    <!-- Sections the Products / Services dropdowns link to, all on this same page -->
+    <section id="panels" class="info-section">
+        <h2>Panels</h2>
+        <p>High-efficiency solar panels built to capture more sunlight and last for decades.</p>
+        <div class="item-grid">
+            <div class="item-card">
+                <h3>Monocrystalline 400W</h3>
+                <p>Our most efficient panel, ideal for smaller roofs that need maximum output.</p>
+                <span class="item-price">From $320 / panel</span>
+            </div>
+            <div class="item-card">
+                <h3>Polycrystalline 330W</h3>
+                <p>A budget-friendly option with solid performance for larger installations.</p>
+                <span class="item-price">From $240 / panel</span>
+            </div>
+            <div class="item-card">
+                <h3>Bifacial 450W</h3>
+                <p>Captures sunlight from both sides for extra output on reflective roofs.</p>
+                <span class="item-price">From $410 / panel</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="inverter" class="info-section">
+        <h2>Inverter</h2>
+        <p>Smart inverters that convert solar energy into reliable power for your home.</p>
+        <div class="item-grid">
+            <div class="item-card">
+                <h3>String Inverter</h3>
+                <p>A reliable, cost-effective choice for roofs with consistent sun exposure.</p>
+                <span class="item-price">From $1,200</span>
+            </div>
+            <div class="item-card">
+                <h3>Microinverter</h3>
+                <p>Optimizes each panel individually, great for roofs with partial shading.</p>
+                <span class="item-price">From $1,800</span>
+            </div>
+            <div class="item-card">
+                <h3>Hybrid Inverter</h3>
+                <p>Works with battery storage to keep your home powered during outages.</p>
+                <span class="item-price">From $2,400</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="batteries" class="info-section">
+        <h2>Batteries</h2>
+        <p>Store extra energy during the day and use it whenever you need it.</p>
+        <div class="item-grid">
+            <div class="item-card">
+                <h3>Lithium-ion 10 kWh</h3>
+                <p>A compact battery that covers essential loads overnight.</p>
+                <span class="item-price">From $6,500</span>
+            </div>
+            <div class="item-card">
+                <h3>Lithium-ion 15 kWh</h3>
+                <p>Extra capacity for whole-home backup and heavier usage.</p>
+                <span class="item-price">From $9,200</span>
+            </div>
+            <div class="item-card">
+                <h3>Lead-acid 5 kWh</h3>
+                <p>An economical entry point for basic backup needs.</p>
+                <span class="item-price">From $2,800</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="consultation" class="info-section">
+        <h2>Consultation</h2>
+        <p>Talk with our team about the right setup for your home and budget.</p>
+        <div class="item-grid">
+            <div class="item-card">
+                <h3>Free Site Assessment</h3>
+                <p>A quick remote review of your roof and energy usage to get started.</p>
+                <span class="item-price">Free</span>
+            </div>
+            <div class="item-card">
+                <h3>Virtual Consultation</h3>
+                <p>A video call with a specialist to walk through your options.</p>
+                <span class="item-price">$0</span>
+            </div>
+            <div class="item-card">
+                <h3>In-Home Consultation</h3>
+                <p>An on-site visit for a detailed, personalized recommendation.</p>
+                <span class="item-price">From $99</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="designing" class="info-section">
+        <h2>Designing</h2>
+        <p>A custom system layout designed around your roof and energy needs.</p>
+        <div class="item-grid">
+            <div class="item-card">
+                <h3>Custom Layout Design</h3>
+                <p>Panel placement planned around your roof's shape and shading.</p>
+                <span class="item-price">From $150</span>
+            </div>
+            <div class="item-card">
+                <h3>3D Roof Modeling</h3>
+                <p>A detailed 3D model so you can see the system before it's built.</p>
+                <span class="item-price">From $200</span>
+            </div>
+            <div class="item-card">
+                <h3>Energy Needs Analysis</h3>
+                <p>A breakdown of your usage to size the system correctly.</p>
+                <span class="item-price">From $75</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="permitting" class="info-section">
+        <h2>Permitting</h2>
+        <p>We handle the paperwork and permits so you don't have to.</p>
+        <div class="item-grid">
+            <div class="item-card">
+                <h3>Local Permit Filing</h3>
+                <p>We prepare and submit all required permits with your city or county.</p>
+                <span class="item-price">From $250</span>
+            </div>
+            <div class="item-card">
+                <h3>HOA Approval Assistance</h3>
+                <p>We handle documentation and communication with your HOA.</p>
+                <span class="item-price">From $150</span>
+            </div>
+            <div class="item-card">
+                <h3>Utility Interconnection</h3>
+                <p>We manage the approval process with your utility company.</p>
+                <span class="item-price">From $200</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="installation" class="info-section">
+        <h2>Installation</h2>
+        <p>Professional installation from a certified local team.</p>
+        <div class="item-grid">
+            <div class="item-card">
+                <h3>Standard Installation</h3>
+                <p>Full rooftop installation completed by our certified crew.</p>
+                <span class="item-price">From $2,500</span>
+            </div>
+            <div class="item-card">
+                <h3>Express Installation</h3>
+                <p>Priority scheduling for a faster turnaround on your project.</p>
+                <span class="item-price">From $3,200</span>
+            </div>
+            <div class="item-card">
+                <h3>Ground Mount Installation</h3>
+                <p>For properties where a roof mount isn't the best fit.</p>
+                <span class="item-price">From $3,800</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="maintenance" class="info-section">
+        <h2>Maintenance</h2>
+        <p>Regular check-ups to keep your system running at its best.</p>
+        <div class="item-grid">
+            <div class="item-card">
+                <h3>Annual Checkup Plan</h3>
+                <p>One full inspection and cleaning per year.</p>
+                <span class="item-price">$120 / year</span>
+            </div>
+            <div class="item-card">
+                <h3>Quarterly Maintenance Plan</h3>
+                <p>Four visits a year for consistent, hands-off upkeep.</p>
+                <span class="item-price">$380 / year</span>
+            </div>
+            <div class="item-card">
+                <h3>On-Demand Maintenance</h3>
+                <p>Schedule a visit only when you need one.</p>
+                <span class="item-price">From $80 / visit</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="repair" class="info-section">
+        <h2>Repair</h2>
+        <p>Fast, dependable repairs whenever something needs attention.</p>
+    </section>
+
+    <section id="monitoring" class="info-section">
+        <h2>Monitoring</h2>
+        <p>Track your system's performance from your phone, anytime.</p>
+    </section>
+
+    <section id="our-story" class="about-section">
+        <div class="about-image" role="img" aria-label="Solar panels stretching toward the horizon"></div>
+        <div class="about-copy">
+            <span class="eyebrow">A LITTLE MORE SUNSHINE</span>
+            <h2>Good energy is<br><em>about people.</em></h2>
+            <p>At Sun Son Solar, we believe a brighter energy future should feel clear, considered, and made for real life. We bring solar products and services together to help people explore their options with confidence.</p>
+            <a class="text-link text-link-light" href="account.html?mode=signup">Start your solar journey <span aria-hidden="true">↗</span></a>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-main">
+            <a class="brand brand-footer" href="intro.html" aria-label="Sun Son Solar home"><img class="brand-mark" src="sunson-logo.svg" alt=""><span class="brand-name">SUN SON <b>SOLAR</b></span></a>
+            <p>Bring a little more sunshine<br>to the way you power your world.</p>
+            <a class="footer-cta" href="account.html?mode=signup">Let's get started <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="footer-bottom"><span>© <span data-year></span> Sun Son Solar</span><div><a href="#panels">Products</a><a href="#consultation">Services</a><a href="#our-story">About us</a></div><a href="#top" class="back-top">Back to top ↑</a></div>
+    </footer>
+
+    <!-- Sign in modal -->
+    <div class="modal-overlay" id="signin-modal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('signin-modal')">&times;</button>
+            <h2>Sign in</h2>
+            <form id="signin-form" novalidate>
+                <label for="signin-email">Email</label>
+                <input type="email" id="signin-email" placeholder="you@example.com">
+                <p class="field-error" id="signin-email-error"></p>
+
+                <label for="signin-password">Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="signin-password" placeholder="Password">
+                    <button type="button" class="toggle-password" onclick="togglePassword('signin-password', this)">Show</button>
+                </div>
+                <p class="field-error" id="signin-password-error"></p>
+
+                <p class="form-error" id="signin-form-error"></p>
+
+                <button class="btn" type="submit">Sign in</button>
+            </form>
+            <p class="modal-switch">Don't have an account? <a onclick="switchModal('signin-modal','signup-modal')">Sign up</a></p>
+        </div>
+    </div>
+
+    <!-- Sign up modal -->
+    <div class="modal-overlay" id="signup-modal">
+        <div class="modal modal-lg">
+            <button class="modal-close" onclick="closeModal('signup-modal')">&times;</button>
+            <h2>Sign up</h2>
+
+            <div class="account-type-toggle" role="group" aria-label="Account type">
+                <button type="button" class="type-btn active" id="type-btn-customer" onclick="setAccountType('customer')">Customer</button>
+                <button type="button" class="type-btn" id="type-btn-employee" onclick="setAccountType('employee')">Employee</button>
+            </div>
+
+            <form id="signup-form" novalidate>
+                <label for="signup-first-name">First name</label>
+                <input type="text" id="signup-first-name" placeholder="First name">
+                <p class="field-error" id="signup-first-name-error"></p>
+
+                <label for="signup-last-name">Last name</label>
+                <input type="text" id="signup-last-name" placeholder="Last name">
+                <p class="field-error" id="signup-last-name-error"></p>
+
+                <label for="signup-birthday">Birthday</label>
+                <input type="date" id="signup-birthday">
+                <p class="field-error" id="signup-birthday-error"></p>
+
+                <label for="signup-gender">Gender</label>
+                <select id="signup-gender">
+                    <option value="">Select one</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="other">Other</option>
+                    <option value="prefer-not-to-say">Prefer not to say</option>
+                </select>
+                <p class="field-error" id="signup-gender-error"></p>
+
+                <label for="signup-email">Email</label>
+                <input type="email" id="signup-email" placeholder="you@example.com">
+                <p class="field-error" id="signup-email-error"></p>
+
+                <label for="signup-phone">Phone number</label>
+                <input type="tel" id="signup-phone" placeholder="e.g. 0917 123 4567">
+                <p class="field-error" id="signup-phone-error"></p>
+
+                <label for="signup-address">Address</label>
+                <input type="text" id="signup-address" placeholder="Street, city, province">
+                <p class="field-error" id="signup-address-error"></p>
+
+                <div id="department-field">
+                    <label for="signup-department">Department</label>
+                    <select id="signup-department">
+                        <option value="">Select a department</option>
+                        <option value="sales">Sales</option>
+                        <option value="installation">Installation</option>
+                        <option value="maintenance">Maintenance</option>
+                        <option value="design">Design &amp; Engineering</option>
+                        <option value="permitting">Permitting</option>
+                        <option value="customer-support">Customer Support</option>
+                        <option value="administration">Administration</option>
+                    </select>
+                    <p class="field-error" id="signup-department-error"></p>
+                </div>
+
+                <label for="signup-username">Username</label>
+                <input type="text" id="signup-username" placeholder="Choose a username">
+                <p class="field-error" id="signup-username-error"></p>
+
+                <label for="signup-password">Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="signup-password" placeholder="At least 8 characters">
+                    <button type="button" class="toggle-password" onclick="togglePassword('signup-password', this)">Show</button>
+                </div>
+                <p class="field-error" id="signup-password-error"></p>
+
+                <label for="signup-confirm-password">Confirm password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="signup-confirm-password" placeholder="Re-enter password">
+                    <button type="button" class="toggle-password" onclick="togglePassword('signup-confirm-password', this)">Show</button>
+                </div>
+                <p class="field-error" id="signup-confirm-password-error"></p>
+
+                <p class="form-error" id="signup-form-error"></p>
+
+                <button class="btn" type="submit">Create account</button>
+            </form>
+            <p class="modal-switch">Already have an account? <a onclick="switchModal('signup-modal','signin-modal')">Sign in</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Click-to-open Products / Services dropdowns (replaces hover)
+        function toggleDropdown(e, id) {
+            e.preventDefault();
+            e.stopPropagation();
+            document.querySelectorAll('.dropdown.open').forEach(function (el) {
+                if (el.id !== id) el.classList.remove('open');
+            });
+            document.getElementById(id).classList.toggle('open');
+        }
+
+        // Close an open dropdown when clicking anywhere else on the page
+        document.addEventListener('click', function () {
+            document.querySelectorAll('.dropdown.open').forEach(function (el) {
+                el.classList.remove('open');
+            });
+        });
+
+        // Sign in / Sign up modals
+        function openModal(e, id) {
+            e.preventDefault();
+            document.getElementById(id).classList.add('open');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('open');
+        }
+
+        function switchModal(closeId, openId) {
+            closeModal(closeId);
+            document.getElementById(openId).classList.add('open');
+        }
+
+        // Close a modal by clicking outside of it
+        document.querySelectorAll('.modal-overlay').forEach(function (overlay) {
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) overlay.classList.remove('open');
+            });
+        });
+
+        // Show / hide password
+        function togglePassword(inputId, button) {
+            var input = document.getElementById(inputId);
+            var hidden = input.type === 'password';
+            input.type = hidden ? 'text' : 'password';
+            button.textContent = hidden ? 'Hide' : 'Show';
+        }
+
+        // Customer / Employee toggle on the sign-up form
+        var signupAccountType = 'customer';
+
+        function setAccountType(type) {
+            signupAccountType = type;
+            document.getElementById('type-btn-customer').classList.toggle('active', type === 'customer');
+            document.getElementById('type-btn-employee').classList.toggle('active', type === 'employee');
+            var deptField = document.getElementById('department-field');
+            deptField.style.display = type === 'employee' ? 'block' : 'none';
+            if (type === 'customer') {
+                setFieldError('signup-department', '');
+            }
+        }
+        setAccountType('customer');
+
+        // Validation helpers
+        var EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        function setFieldError(inputId, message) {
+            var input = document.getElementById(inputId);
+            var error = document.getElementById(inputId + '-error');
+            if (message) {
+                input.classList.add('field-invalid');
+                error.textContent = message;
+                error.classList.add('show');
+            } else {
+                input.classList.remove('field-invalid');
+                error.textContent = '';
+                error.classList.remove('show');
+            }
+        }
+
+        function setFormError(formPrefix, message) {
+            var error = document.getElementById(formPrefix + '-form-error');
+            error.textContent = message || '';
+            error.classList.toggle('show', Boolean(message));
+        }
+
+        // Sign in validation
+        document.getElementById('signin-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            setFormError('signin', '');
+
+            var email = document.getElementById('signin-email').value.trim();
+            var password = document.getElementById('signin-password').value;
+            var valid = true;
+
+            if (!email) {
+                setFieldError('signin-email', 'Email is required.');
+                valid = false;
+            } else if (!EMAIL_PATTERN.test(email)) {
+                setFieldError('signin-email', 'Enter a valid email address.');
+                valid = false;
+            } else {
+                setFieldError('signin-email', '');
+            }
+
+            if (!password) {
+                setFieldError('signin-password', 'Password is required.');
+                valid = false;
+            } else {
+                setFieldError('signin-password', '');
+            }
+
+            if (!valid) return;
+
+            // Passed validation - in a real app this would call the sign-in API
+            setFormError('signin', '');
+            closeModal('signin-modal');
+        });
+
+        // Sign up validation
+        document.getElementById('signup-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            setFormError('signup', '');
+
+            var firstName = document.getElementById('signup-first-name').value.trim();
+            var lastName = document.getElementById('signup-last-name').value.trim();
+            var birthday = document.getElementById('signup-birthday').value;
+            var gender = document.getElementById('signup-gender').value;
+            var email = document.getElementById('signup-email').value.trim();
+            var phone = document.getElementById('signup-phone').value.trim();
+            var address = document.getElementById('signup-address').value.trim();
+            var department = document.getElementById('signup-department').value;
+            var username = document.getElementById('signup-username').value.trim();
+            var password = document.getElementById('signup-password').value;
+            var confirmPassword = document.getElementById('signup-confirm-password').value;
+            var valid = true;
+
+            if (!firstName) {
+                setFieldError('signup-first-name', 'First name is required.');
+                valid = false;
+            } else {
+                setFieldError('signup-first-name', '');
+            }
+
+            if (!lastName) {
+                setFieldError('signup-last-name', 'Last name is required.');
+                valid = false;
+            } else {
+                setFieldError('signup-last-name', '');
+            }
+
+            if (!birthday) {
+                setFieldError('signup-birthday', 'Birthday is required.');
+                valid = false;
+            } else {
+                setFieldError('signup-birthday', '');
+            }
+
+            if (!gender) {
+                setFieldError('signup-gender', 'Please select a gender.');
+                valid = false;
+            } else {
+                setFieldError('signup-gender', '');
+            }
+
+            if (!email) {
+                setFieldError('signup-email', 'Email is required.');
+                valid = false;
+            } else if (!EMAIL_PATTERN.test(email)) {
+                setFieldError('signup-email', 'Enter a valid email address.');
+                valid = false;
+            } else {
+                setFieldError('signup-email', '');
+            }
+
+            var PHONE_PATTERN = /^[0-9+()\-\s]{7,}$/;
+            if (!phone) {
+                setFieldError('signup-phone', 'Phone number is required.');
+                valid = false;
+            } else if (!PHONE_PATTERN.test(phone)) {
+                setFieldError('signup-phone', 'Enter a valid phone number.');
+                valid = false;
+            } else {
+                setFieldError('signup-phone', '');
+            }
+
+            if (!address) {
+                setFieldError('signup-address', 'Address is required.');
+                valid = false;
+            } else {
+                setFieldError('signup-address', '');
+            }
+
+            if (signupAccountType === 'employee') {
+                if (!department) {
+                    setFieldError('signup-department', 'Please select a department.');
+                    valid = false;
+                } else {
+                    setFieldError('signup-department', '');
+                }
+            }
+
+            if (!username) {
+                setFieldError('signup-username', 'Username is required.');
+                valid = false;
+            } else if (username.length < 3) {
+                setFieldError('signup-username', 'Use at least 3 characters.');
+                valid = false;
+            } else {
+                setFieldError('signup-username', '');
+            }
+
+            if (!password) {
+                setFieldError('signup-password', 'Password is required.');
+                valid = false;
+            } else if (password.length < 8) {
+                setFieldError('signup-password', 'Use at least 8 characters.');
+                valid = false;
+            } else {
+                setFieldError('signup-password', '');
+            }
+
+            if (!confirmPassword) {
+                setFieldError('signup-confirm-password', 'Please confirm your password.');
+                valid = false;
+            } else if (password && confirmPassword !== password) {
+                setFieldError('signup-confirm-password', 'Passwords do not match.');
+                valid = false;
+            } else {
+                setFieldError('signup-confirm-password', '');
+            }
+
+            if (!valid) return;
+
+            // Passed validation - in a real app this would call the sign-up API
+            // along with signupAccountType ('customer' or 'employee')
+            setFormError('signup', '');
+            closeModal('signup-modal');
+        });
+
+        // Clear a field's error as soon as the person starts fixing it
+        document.querySelectorAll('.modal input, .modal select').forEach(function (input) {
+            var eventName = input.tagName === 'SELECT' ? 'change' : 'input';
+            input.addEventListener(eventName, function () {
+                setFieldError(input.id, '');
+            });
+        });
+
+        // Gallery navigation and automatic playback
+        var carousel = document.querySelector('.showcase');
+        var carouselSlides = Array.from(document.querySelectorAll('.carousel-slide'));
+        var carouselDots = Array.from(document.querySelectorAll('.carousel-dot'));
+        var carouselCount = document.querySelector('[data-carousel-count]');
+        var currentCarouselSlide = 0;
+        var carouselTimer;
+
+        function showCarouselSlide(index) {
+            currentCarouselSlide = (index + carouselSlides.length) % carouselSlides.length;
+            carouselSlides.forEach(function (slide, slideIndex) {
+                var isActive = slideIndex === currentCarouselSlide;
+                slide.classList.toggle('is-active', isActive);
+                slide.setAttribute('aria-hidden', String(!isActive));
+            });
+            carouselDots.forEach(function (dot, dotIndex) {
+                var isActive = dotIndex === currentCarouselSlide;
+                dot.classList.toggle('is-active', isActive);
+                if (isActive) {
+                    dot.setAttribute('aria-current', 'true');
+                } else {
+                    dot.removeAttribute('aria-current');
+                }
+            });
+            if (carouselCount) {
+                carouselCount.textContent = String(currentCarouselSlide + 1).padStart(2, '0');
+            }
+        }
+
+        function startCarouselAutoplay() {
+            window.clearInterval(carouselTimer);
+            if (carouselSlides.length > 1) {
+                carouselTimer = window.setInterval(function () {
+                    showCarouselSlide(currentCarouselSlide + 1);
+                }, 6000);
+            }
+        }
+
+        document.querySelector('[data-carousel-prev]').addEventListener('click', function () {
+            showCarouselSlide(currentCarouselSlide - 1);
+            startCarouselAutoplay();
+        });
+        document.querySelector('[data-carousel-next]').addEventListener('click', function () {
+            showCarouselSlide(currentCarouselSlide + 1);
+            startCarouselAutoplay();
+        });
+        carouselDots.forEach(function (dot, index) {
+            dot.addEventListener('click', function () {
+                showCarouselSlide(index);
+                startCarouselAutoplay();
+            });
+        });
+        carousel.addEventListener('keydown', function (event) {
+            if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                showCarouselSlide(currentCarouselSlide - 1);
+                startCarouselAutoplay();
+            } else if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                showCarouselSlide(currentCarouselSlide + 1);
+                startCarouselAutoplay();
+            }
+        });
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) {
+                window.clearInterval(carouselTimer);
+            } else {
+                startCarouselAutoplay();
+            }
+        });
+        startCarouselAutoplay();
+    </script>
+
+</body>
+</html>

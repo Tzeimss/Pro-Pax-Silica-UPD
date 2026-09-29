@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101b18">
+    <title>Join Sun Son Solar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
+</head>
+<body class="account-page">
+    <main class="account-shell">
+        <section class="account-visual" aria-label="Explore Sun Son Solar">
+            <a class="brand" href="intro.html" aria-label="Sun Son Solar home"><span class="brand-mark" aria-hidden="true">S</span><span class="brand-name">SUN SON <b>SOLAR</b></span></a>
+            <div class="account-story">
+                <span class="eyebrow">A BRIGHTER WAY FORWARD</span>
+                <h1>Make room for a little more <em>sunshine.</em></h1>
+                <p>Explore Sun Son Solar and find a clearer path to the energy choices that fit your home and your life.</p>
+                <ul class="included-list">
+                    <li><span>01</span> Solar products and solutions</li>
+                    <li><span>02</span> Design and installation services</li>
+                    <li><span>03</span> Support for your solar journey</li>
+                </ul>
+            </div>
+            <span class="account-visual-foot">SUN SON SOLAR · POWERED BY POSSIBILITY</span>
+        </section>
+        <section class="account-form-side" aria-labelledby="account-title">
+            <div class="account-form-wrap">
+                <div class="account-topline"><a href="intro.html">← Back to home</a><span>STEP <b>01</b> / 01</span></div>
+                <div class="account-heading">
+                    <span class="eyebrow" data-account-eyebrow>YOUR NEXT CHAPTER</span>
+                    <h2 id="account-title">Create your account</h2>
+                    <p data-account-intro>Start exploring a more thoughtful way to power your world.</p>
+                </div>
+                <form class="account-form" id="account-form" novalidate>
+                    <div class="account-field signup-only"><label for="first-name">First name</label><input id="first-name" name="firstName" autocomplete="given-name" placeholder="Your first name"><span class="field-error"></span></div>
+                    <div class="account-field signup-only"><label for="last-name">Last name</label><input id="last-name" name="lastName" autocomplete="family-name" placeholder="Your last name"><span class="field-error"></span></div>
+                    <div class="account-field signup-only"><label for="middle-name">Middle name</label><input id="middle-name" name="middleName" autocomplete="additional-name" placeholder="Your middle name"><span class="field-error"></span></div>
+                    <div class="account-field signup-only"><label for="birthday">Birthday</label><input id="birthday" name="birthday" type="date" autocomplete="bday"><span class="field-error"></span></div>
+                    <div class="account-field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com"><span class="field-error"></span></div>
+                    <div class="account-field signup-only"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Your phone number"><span class="field-error"></span></div>
+                    <div class="account-field field-wide signup-only"><label for="address">Address</label><input id="address" name="address" autocomplete="street-address" placeholder="Street, city, region"><span class="field-error"></span></div>
+                    <div class="account-field signup-only"><label for="username">Username</label><input id="username" name="username" autocomplete="username" placeholder="Choose a username"><span class="field-error"></span></div>
+                    <div class="account-field"><label for="password">Password</label><div class="password-wrap"><input id="password" name="password" type="password" autocomplete="new-password" placeholder="At least 8 characters"><button class="password-toggle" type="button" data-password="password">Show</button></div><span class="field-error"></span></div>
+                    <div class="account-field signup-only"><label for="confirm-password">Confirm password</label><div class="password-wrap"><input id="confirm-password" name="confirmPassword" type="password" autocomplete="new-password" placeholder="Re-enter your password"><button class="password-toggle" type="button" data-password="confirm-password">Show</button></div><span class="field-error"></span></div>
+                    <div class="account-status" role="status" aria-live="polite"></div>
+                    <button class="account-submit" type="submit"><span data-submit-label>Create account</span><span aria-hidden="true">↗</span></button>
+                </form>
+                <p class="account-switch"><span data-switch-prompt>Already have an account?</span> <a data-switch-link href="account.html?mode=signin">Sign in</a></p>
+            </div>
+        </section>
+    </main>
+    <script>
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            var isSignin = params.get('mode') === 'signin';
+            var form = document.getElementById('account-form');
+            var fields = Array.from(form.querySelectorAll('input'));
+            var status = form.querySelector('.account-status');
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('birthday').max = today;
+
+            if (isSignin) {
+                form.classList.add('is-signin');
+                document.title = 'Sign in | Sun Son Solar';
+                document.getElementById('account-title').textContent = 'Welcome back';
+                document.querySelector('[data-account-eyebrow]').textContent = 'GOOD TO SEE YOU AGAIN';
+                document.querySelector('[data-account-intro]').textContent = 'Sign in to continue your Sun Son Solar journey.';
+                document.querySelector('[data-submit-label]').textContent = 'Sign in';
+                document.querySelector('[data-switch-prompt]').textContent = 'New to Sun Son Solar?';
+                document.querySelector('[data-switch-link]').textContent = 'Create an account';
+                document.querySelector('[data-switch-link]').href = 'account.html?mode=signup';
+                document.getElementById('email').placeholder = 'Email address';
+                document.getElementById('email').autocomplete = 'username';
+                document.getElementById('password').autocomplete = 'current-password';
+                document.getElementById('password').placeholder = 'Your password';
+            }
+
+            function setError(input, message) {
+                var error = input.closest('.account-field').querySelector('.field-error');
+                input.classList.toggle('field-invalid', Boolean(message));
+                error.textContent = message || '';
+                error.classList.toggle('show', Boolean(message));
+            }
+
+            document.querySelectorAll('.password-toggle').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var input = document.getElementById(button.dataset.password);
+                    var visible = input.type === 'password';
+                    input.type = visible ? 'text' : 'password';
+                    button.textContent = visible ? 'Hide' : 'Show';
+                });
+            });
+
+            fields.forEach(function (input) {
+                input.addEventListener('input', function () { setError(input, ''); status.classList.remove('show'); });
+            });
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                status.classList.remove('show');
+                var valid = true;
+                var required = isSignin ? ['email', 'password'] : ['first-name', 'last-name', 'birthday', 'email', 'phone', 'address', 'username', 'password', 'confirm-password'];
+                required.forEach(function (id) {
+                    var input = document.getElementById(id);
+                    var value = input.value.trim();
+                    var message = value ? '' : 'This field is required.';
+                    if (id === 'email' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) message = 'Enter a valid email address.';
+                    if (id === 'phone' && value && !/^[0-9+()\-\s]{7,}$/.test(value)) message = 'Enter a valid phone number.';
+                    if (id === 'username' && value && value.length < 3) message = 'Use at least 3 characters.';
+                    if (!isSignin && id === 'password' && value && value.length < 8) message = 'Use at least 8 characters.';
+                    if (id === 'confirm-password' && value && value !== document.getElementById('password').value) message = 'Passwords do not match.';
+                    if (id === 'birthday' && value && value > today) message = 'Birthday cannot be in the future.';
+                    setError(input, message);
+                    if (message) valid = false;
+                });
+                var middleName = document.getElementById('middle-name');
+                if (!isSignin && middleName.value.trim()) setError(middleName, '');
+                if (!valid) {
+                    var firstInvalid = form.querySelector('.field-invalid');
+                    if (firstInvalid) firstInvalid.focus();
+                    return;
+                }
+                status.textContent = isSignin
+                    ? 'Your details look good. Sign-in is not connected to an account service on this demo site yet.'
+                    : 'Your details look good. Account creation is not connected to an account service on this demo site yet.';
+                status.classList.add('show');
+            });
+        }());
+    </script>
+</body>
+</html>

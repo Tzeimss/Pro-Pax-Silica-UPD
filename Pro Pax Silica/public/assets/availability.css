@@ -1,0 +1,1 @@
+.availability-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}.availability-grid form{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px;border:1px solid #e3e9e2;border-radius:7px;font-size:12px}.availability-grid label{white-space:nowrap;color:#647169}.availability-grid input{vertical-align:middle}

@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Sun Son Solar | Workspace</title>
+    <style>
+        :root {
+            --bg: #f4f6f3;
+            --card: #fff;
+            --ink: #14211c;
+            --mut: #5d6e66;
+            --line: #dfe6e1;
+            --side: #101b18;
+            --lime: #c8f169;
+            --amb: #e8a33d;
+            --bad: #c0392b;
+            --ok: #2e8b57;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #0b1411;
+                --card: #15221d;
+                --ink: #e9f1ec;
+                --mut: #9ab0a5;
+                --line: #243630;
+            }
+        }
+
+        :root[data-theme="dark"] {
+            --bg: #0b1411;
+            --card: #15221d;
+            --ink: #e9f1ec;
+            --mut: #9ab0a5;
+            --line: #243630;
+        }
+
+        * { box-sizing: border-box; }
+        html, body { margin: 0; }
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font: 15px/1.5 "DM Sans", system-ui, sans-serif;
+        }
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: .7rem 1.2rem;
+            background: var(--side);
+            color: #e9f1ec;
+            flex-wrap: wrap;
+        }
+        .brand { font-weight: 800; letter-spacing: .04em; }
+        .brand b { color: var(--lime); }
+        .top select {
+            background: #1c2c27;
+            color: #e9f1ec;
+            border: 1px solid #33463f;
+            border-radius: 8px;
+            padding: .4rem .6rem;
+            font: inherit;
+        }
+        .app {
+            display: grid;
+            grid-template-columns: 240px minmax(0, 1fr);
+            gap: 1.3rem;
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 1.2rem;
+        }
+        .side {
+            background: var(--side);
+            color: #e9f1ec;
+            border-radius: 16px;
+            padding: .7rem .5rem;
+            align-self: start;
+            position: sticky;
+            top: 1rem;
+        }
+        .side a {
+            display: flex;
+            justify-content: space-between;
+            padding: .55rem .8rem;
+            border-radius: 10px;
+            color: inherit;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .side a:hover { background: rgba(255, 255, 255, .08); }
+        .side a.on { background: var(--lime); color: #101b18; font-weight: 700; }
+        .cnt {
+            background: var(--amb);
+            color: #101b18;
+            border-radius: 99px;
+            padding: 0 .45rem;
+            font-size: .75rem;
+            font-weight: 700;
+        }
+        main { min-width: 0; }
+        h1 { margin: .1rem 0 .2rem; font-size: 1.6rem; }
+        h2 { margin: 0 0 .6rem; font-size: 1.1rem; }
+        .sub { color: var(--mut); margin: 0 0 1rem; }
+        .panel {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: .8rem; }
+        .metric { background: var(--bg); border-radius: 12px; padding: .8rem; }
+        .metric small { color: var(--mut); }
+        .metric strong { display: block; font-size: 1.5rem; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { text-align: left; padding: .5rem .4rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+        th { color: var(--mut); font-size: .8rem; font-weight: 600; }
+        .wrap { overflow-x: auto; }
+        .badge { display: inline-block; padding: .1rem .55rem; border-radius: 99px; background: var(--line); font-size: .78rem; font-weight: 600; }
+        .s-Pending { background: #fbe7c0; color: #6b4a00; }
+        .s-Approved, .s-Scheduled { background: #d4ecfa; color: #0c4a6e; }
+        .s-In\ Progress { background: #e4dcfa; color: #3b2a7a; }
+        .s-Completed { background: #d3f0de; color: #145c34; }
+        .s-Declined, .s-Cancelled { background: #f6d5d1; color: #7a1d12; }
+        form, .row { display: flex; flex-wrap: wrap; gap: .6rem; align-items: end; }
+        label { display: flex; flex-direction: column; font-size: .8rem; color: var(--mut); gap: .2rem; flex: 1; min-width: 140px; }
+        input, select, textarea { font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: .5rem; }
+        button, .btn { font: inherit; font-weight: 600; border: 0; border-radius: 9px; padding: .5rem .9rem; background: var(--side); color: #fff; cursor: pointer; }
+        .btn-l { background: var(--lime); color: #101b18; }
+        .btn-d { background: var(--bad); }
+        .btn-s { padding: .25rem .6rem; font-size: .82rem; }
+        .note { padding: .6rem .9rem; border-radius: 10px; background: #d3f0de; color: #145c34; margin-bottom: 1rem; }
+        .note.err { background: #f6d5d1; color: #7a1d12; }
+        .item { border: 1px solid var(--line); border-radius: 10px; padding: .7rem .8rem; margin-bottom: .6rem; }
+        .item small { color: var(--mut); }
+        .safe { border-left: 4px solid var(--amb); }
+        .urgent { border-left: 4px solid var(--bad); }
+        .bars div { display: flex; align-items: center; gap: .6rem; margin: .3rem 0; }
+        .bars span { width: 110px; font-size: .85rem; }
+        .bars i { display: block; height: 14px; background: var(--lime); border-radius: 4px; min-width: 3px; }
+        .cal { display: grid; grid-template-columns: repeat(7, minmax(90px, 1fr)); gap: 4px; min-width: 640px; }
+        .cal b { font-size: .75rem; color: var(--mut); text-align: center; }
+        .day { min-height: 84px; background: var(--bg); border-radius: 8px; padding: .25rem; font-size: .72rem; }
+        .day.today { outline: 2px solid var(--lime); }
+        .day em { font-style: normal; color: var(--mut); }
+        .ev { display: block; margin-top: 2px; padding: 1px 4px; border-radius: 4px; background: #d4ecfa; color: #0c4a6e; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .chat { display: flex; flex-direction: column; gap: .4rem; max-height: 280px; overflow: auto; margin-bottom: .6rem; }
+        .m { max-width: 80%; padding: .45rem .7rem; border-radius: 12px; background: var(--bg); }
+        .m.me { align-self: flex-end; background: var(--lime); color: #101b18; }
+        .m small { display: block; opacity: .7; font-size: .7rem; }
+        @media (max-width: 860px) {
+            .app { grid-template-columns: 1fr; padding: .7rem; }
+            .side { position: static; display: flex; overflow-x: auto; }
+            .side a { white-space: nowrap; }
+        }
+    </style>
+</head>
+<body>
+<div class="top"><span class="brand">SUN SON <b>SOLAR</b> | Workspace preview</span>
+<label style="flex:none;color:#9ab0a5;min-width:0;flex-direction:row;align-items:center">View as <select id="role"><option value="customer">Customer</option><option value="staff">Staff</option><option value="admin">Admin</option></select></label>
+<span style="flex:none;color:#9ab0a5;font-size:.85rem"><span id="who"></span> <button class="btn-s" onclick="signOut()">Sign out</button></span></div>
+<div class="app"><nav class="side" id="nav"></nav><main id="view"></main></div>
+<script>
+const $=s=>document.querySelector(s);
+function readSession(){let u=null;const m=location.hash.match(/^#s=(.+)$/);
+ if(m){try{u=JSON.parse(decodeURIComponent(m[1]));try{localStorage.setItem('sunson_session',JSON.stringify(u))}catch(e){}history.replaceState(null,'',location.pathname+location.search)}catch(e){u=null}}
+ if(!u){try{u=JSON.parse(localStorage.getItem('sunson_session'))}catch(e){}}
+ return u&&u.role?u:null}
+let USER=readSession();
+if(!USER){location.replace('account.html?mode=signin');USER={name:'Guest',role:'customer'}}
+function signOut(){try{localStorage.removeItem('sunson_session')}catch(e){}location.href='account.html?mode=signin'}
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const iso=(d,h)=>{const x=new Date();x.setDate(x.getDate()+d);x.setHours(h,0,0,0);const p=n=>String(n).padStart(2,'0');return x.getFullYear()+'-'+p(x.getMonth()+1)+'-'+p(x.getDate())+'T'+p(h)+':00'};
+const SVC={Consultation:60,Design:120,Permitting:90,Installation:240,Maintenance:120,Repair:120,Monitoring:60};
+const TECHS=['Ana Cruz','Ben Reyes'];
+const S={role:'customer',tab:'overview',msg:'',err:false,nextId:7,
+ bookings:[
+  {id:1,cust:'Maria Santos',svc:'Installation',at:iso(3,9),addr:'12 Maple St, Quezon City',st:'Scheduled',tech:'Ana Cruz',paid:0},
+  {id:2,cust:'Maria Santos',svc:'Maintenance',at:iso(-20,10),addr:'12 Maple St, Quezon City',st:'Completed',tech:'Ben Reyes',paid:2500},
+  {id:3,cust:'John Lim',svc:'Consultation',at:iso(1,14),addr:'88 Oak Ave, Pasig',st:'Pending',tech:'',paid:0},
+  {id:4,cust:'Grace Tan',svc:'Repair',at:iso(2,13),addr:'5 Pine Rd, Marikina',st:'Approved',tech:'Ben Reyes',paid:0},
+  {id:5,cust:'Maria Santos',svc:'Monitoring',at:iso(8,11),addr:'12 Maple St, Quezon City',st:'Pending',tech:'',paid:0},
+  {id:6,cust:'John Lim',svc:'Design',at:iso(5,10),addr:'88 Oak Ave, Pasig',st:'Scheduled',tech:'Ana Cruz',paid:0}],
+ notices:[{t:'Safety: harness check',m:'Inspect harness and anchor points before any roof work. Never work alone above 2 m.',k:'safe'},{t:'Urgent: storm advisory',m:'Roof jobs paused tomorrow after 2 PM. Dispatch will reschedule.',k:'urgent'},{t:'Company update',m:'New inverter models arrive Friday.',k:''}],
+ promos:['10% off battery maintenance this month','Free monitoring review with any new installation'],
+ chat:[{from:'staff',t:'Hi Maria, how can we help?',at:'09:02'}],
+ checkins:[],reports:[],employees:[{n:'Ana Cruz',d:'Dispatch',r:'Technician',a:1},{n:'Ben Reyes',d:'Dispatch',r:'Technician',a:1},{n:'Lea Ramos',d:'HR',r:'HR',a:1}]};
+const ME=USER.role==='admin'?'Maria Santos':USER.name;
+const TABS={customer:[['overview','Overview'],['bookings','My bookings'],['support','Support & chat'],['payments','Payments & receipts'],['inbox','Updates']],
+ staff:[['jobs','My jobs'],['notices','Announcements & safety']],
+ admin:[['overview','Overview'],['calendar','Calendar'],['dispatch','Bookings & dispatch'],['people','People & HR'],['comms','Announcements'],['support','Support chat'],['reports','Reports']]};
+const roleSelect=$('#role');[['customer','Customer'],['staff','Staff'],['admin','Admin']].forEach(([value,label])=>{if(!Array.from(roleSelect.options).some(option=>option.value===value)){const option=document.createElement('option');option.value=value;option.textContent=label;roleSelect.appendChild(option)}});
+const initialRole=USER.role==='technician'?'staff':USER.role;S.role=TABS[initialRole]?initialRole:'customer';S.tab=TABS[S.role][0][0];
+const end=b=>new Date(new Date(b.at).getTime()+SVC[b.svc]*60000);
+function clash(tech,b,at){const s=new Date(at),e=new Date(s.getTime()+SVC[b.svc]*60000);return S.bookings.find(o=>o.id!==b.id&&o.tech===tech&&['Approved','Scheduled','In Progress'].includes(o.st)&&new Date(o.at)<e&&end(o)>s)}
+const fmt=a=>new Date(a).toLocaleString([], {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+const badge=s=>`<span class="badge s-${s}">${s}</span>`;
+function say(m,err){S.msg=m;S.err=!!err;render()}
+function setRole(r){S.role=r;S.tab=TABS[r][0][0];S.msg='';render()}
+function go(t){S.tab=t;S.msg='';render()}
+function render(){
+ $('#role').value=S.role;
+ const pend=S.bookings.filter(b=>b.st==='Pending').length;
+ $('#nav').innerHTML=TABS[S.role].map(([id,l])=>`<a class="${id===S.tab?'on':''}" onclick="go('${id}')">${l}${S.role==='admin'&&id==='dispatch'&&pend?`<span class="cnt">${pend}</span>`:''}</a>`).join('');
+ $('#view').innerHTML=(S.msg?`<div class="note ${S.err?'err':''}" role="status">${esc(S.msg)}</div>`:'')+(V[S.role+'.'+S.tab]||(()=>''))();
+}
+const chatBox=who=>`<div class="chat">${S.chat.map(m=>`<div class="m ${m.from===who?'me':''}"><small>${m.from==='staff'?'Sun Son Solar':ME} | ${m.at}</small>${esc(m.t)}</div>`).join('')}</div>
+<form onsubmit="return sendChat(event,'${who}')"><label>Message<input name="t" required maxlength="500"></label><button class="btn-l">Send</button></form>`;
+function sendChat(e,who){e.preventDefault();const t=e.target.t.value.trim();if(!t)return false;S.chat.push({from:who,t,at:new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})});render();return false}
+const table=(h,rows)=>`<div class="wrap"><table><thead><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${rows||'<tr><td colspan="9">Nothing here yet.</td></tr>'}</tbody></table></div>`;
+const V={
+'customer.overview':()=>{const mine=S.bookings.filter(b=>b.cust===ME),up=mine.filter(b=>['Pending','Approved','Scheduled'].includes(b.st)).sort((a,b)=>a.at<b.at?-1:1),done=mine.filter(b=>b.st==='Completed');
+ return `<h1>Hello, Maria.</h1><p class="sub">Your solar service at a glance.</p><div class="panel"><div class="grid"><div class="metric"><small>Upcoming</small><strong>${up.length}</strong></div><div class="metric"><small>Completed</small><strong>${done.length}</strong></div><div class="metric"><small>Total paid</small><strong>&#8369;${mine.reduce((a,b)=>a+b.paid,0).toLocaleString()}</strong></div></div></div>
+ <div class="panel"><h2>Upcoming schedule</h2>${table(['Service','When','Status'],up.map(b=>`<tr><td>${b.svc}</td><td>${fmt(b.at)}</td><td>${badge(b.st)}</td></tr>`).join(''))}</div>
+ <div class="panel"><h2>Completed services</h2>${table(['Service','Date','Technician'],done.map(b=>`<tr><td>${b.svc}</td><td>${fmt(b.at)}</td><td>${b.tech}</td></tr>`).join(''))}</div>`},
+'customer.bookings':()=>`<h1>My bookings</h1><p class="sub">Request a service and follow its progress.</p><div class="panel"><h2>Request a service</h2><form onsubmit="return book(event)"><label>Service<select name="svc">${Object.keys(SVC).map(s=>`<option>${s}</option>`)}</select></label><label>Preferred date and time<input type="datetime-local" name="at" required></label><label>Address<input name="addr" required value="12 Maple St, Quezon City"></label><button class="btn-l">Request</button></form></div>
+ <div class="panel">${table(['Service','When','Address','Status',''],S.bookings.filter(b=>b.cust===ME).map(b=>`<tr><td>${b.svc}</td><td>${fmt(b.at)}</td><td>${esc(b.addr)}</td><td>${badge(b.st)}</td><td>${['Pending','Approved','Scheduled'].includes(b.st)?`<button class="btn-d btn-s" onclick="setSt(${b.id},'Cancelled')">Cancel</button>`:''}</td></tr>`).join(''))}</div>`,
+'customer.support':()=>`<h1>Support & chat</h1><p class="sub">Message our team directly.</p><div class="panel">${chatBox('customer')}</div>`,
+'customer.payments':()=>`<h1>Payments & receipts</h1><div class="panel">${table(['Booking','Amount','Receipt'],S.bookings.filter(b=>b.cust===ME&&b.paid).map(b=>`<tr><td>#${b.id} ${b.svc}</td><td>&#8369;${b.paid.toLocaleString()}</td><td>SSS-${b.id.toString().padStart(5,'0')}</td></tr>`).join(''))}</div>`,
+'customer.inbox':()=>`<h1>Updates</h1><div class="panel"><h2>Promotions</h2>${S.promos.map(p=>`<div class="item">${esc(p)}</div>`).join('')}</div><div class="panel"><h2>Company updates</h2>${S.notices.filter(n=>!n.k).map(n=>`<div class="item"><b>${esc(n.t)}</b><br>${esc(n.m)}</div>`).join('')}</div>`,
+'staff.jobs':()=>{const me='Ana Cruz';return `<h1>My jobs</h1><p class="sub">Only customer name, address and service type are shown.</p>${S.bookings.filter(b=>b.tech===me&&b.st!=='Cancelled').sort((a,b)=>a.at<b.at?-1:1).map(b=>`<div class="panel"><div class="row"><div style="flex:1"><h2>${b.svc} ${badge(b.st)}</h2>${esc(b.cust)}<br>${esc(b.addr)}<br><small>${fmt(b.at)}</small></div>
+ <div><button class="btn-l" onclick="checkin(${b.id})">Check in</button> ${b.st==='Scheduled'?`<button class="btn-s" onclick="setSt(${b.id},'In Progress')">Start</button>`:''}${b.st==='In Progress'?`<button class="btn-s" onclick="setSt(${b.id},'Completed')">Complete</button>`:''}</div></div>
+ ${S.checkins.filter(c=>c.id===b.id).map(c=>`<div class="item"><small>Checked in: ${esc(c.who)}  | ${c.when}  | ${c.gps}</small></div>`).join('')}
+ <form onsubmit="return report(event,${b.id})"><label>Service report<input name="s" required></label><label>Equipment problem<input name="e"></label><label>Customer concern<input name="c"></label><button class="btn-s">Submit to admin</button></form></div>`).join('')||'<div class="panel">No jobs assigned.</div>'}`},
+'staff.notices':()=>`<h1>Announcements & safety</h1><p class="sub">Reminders, urgent notices and safety guidelines from the office.</p>${S.notices.map(n=>`<div class="panel item ${n.k}"><b>${n.k==='urgent'?'URGENT: ':n.k==='safe'?'SAFETY: ':''}${esc(n.t)}</b><br>${esc(n.m)}</div>`).join('')}`,
+'admin.overview':()=>{const c=k=>S.bookings.filter(b=>b.st===k).length;return `<h1>Operations overview</h1><div class="panel"><div class="grid"><div class="metric"><small>Pending requests</small><strong>${c('Pending')}</strong></div><div class="metric"><small>Upcoming</small><strong>${c('Approved')+c('Scheduled')}</strong></div><div class="metric"><small>Completed</small><strong>${c('Completed')}</strong></div><div class="metric"><small>Revenue</small><strong>&#8369;${S.bookings.reduce((a,b)=>a+b.paid,0).toLocaleString()}</strong></div></div></div>${bars('Bookings by status',['Pending','Approved','Scheduled','In Progress','Completed','Declined','Cancelled'].map(k=>[k,c(k)]))}`},
+'admin.reports':()=>{const bySvc=Object.keys(SVC).map(s=>[s,S.bookings.filter(b=>b.svc===s).length]);const rev=Object.keys(SVC).map(s=>[s,S.bookings.filter(b=>b.svc===s).reduce((a,b)=>a+b.paid,0)]);const cu=[...new Set(S.bookings.map(b=>b.cust))].map(c=>[c,S.bookings.filter(b=>b.cust===c).length]);return `<h1>Reports & analytics</h1>${bars('Service usage',bySvc)}${bars('Revenue by service (&#8369;)',rev)}${bars('Customer activity',cu)}<button class="btn-l" onclick="csv()">Download CSV</button>`},
+'admin.calendar':()=>{const n=new Date(),y=n.getFullYear(),m=n.getMonth(),first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();let h='<div class="cal">'+['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d=>`<b>${d}</b>`).join('');for(let i=0;i<first;i++)h+='<div></div>';for(let d=1;d<=days;d++){const key=y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');h+=`<div class="day ${d===n.getDate()?'today':''}"><em>${d}</em>${S.bookings.filter(b=>b.at.startsWith(key)&&!['Cancelled','Declined'].includes(b.st)).map(b=>`<span class="ev" title="${esc(b.cust)}">${new Date(b.at).getHours()}:00 ${b.svc}</span>`).join('')}</div>`}return `<h1>${n.toLocaleString([], {month:'long',year:'numeric'})}</h1><p class="sub">All approved and scheduled bookings.</p><div class="panel wrap">${h}</div></div>`},
+'admin.dispatch':()=>`<h1>Bookings & dispatch</h1><p class="sub">Approve, decline, assign and reschedule. Double-booking is blocked.</p><div class="panel">${table(['#','Customer','Service','When','Status','Technician','Actions'],S.bookings.map(b=>`<tr><td>${b.id}</td><td>${esc(b.cust)}</td><td>${b.svc}</td><td><input type="datetime-local" value="${b.at}" onchange="resched(${b.id},this.value)"></td><td>${badge(b.st)}</td><td><select onchange="assign(${b.id},this.value)"><option value="">Unassigned</option>${TECHS.map(t=>`<option ${t===b.tech?'selected':''}>${t}</option>`).join('')}</select></td><td>${b.st==='Pending'?`<button class="btn-s" onclick="setSt(${b.id},'Approved')">Approve</button> <button class="btn-d btn-s" onclick="setSt(${b.id},'Declined')">Decline</button>`:''}</td></tr>`).join(''))}</div>`,
+'admin.people':()=>`<h1>People & HR</h1><div class="panel"><h2>Create employee account</h2><form onsubmit="return addEmp(event)"><label>Full name<input name="n" required></label><label>Department<select name="d">${['Administration','IT','Dispatch','Accounting','HR','Marketing','Sales','Customer Service'].map(d=>`<option>${d}</option>`)}</select></label><label>Role<select name="r"><option>Technician</option><option>Staff</option><option>HR</option></select></label><button class="btn-l">Create</button></form></div><div class="panel">${table(['Name','Department','Role','Status',''],S.employees.map((e,i)=>`<tr><td>${esc(e.n)}</td><td>${e.d}</td><td>${e.r}</td><td>${badge(e.a?'Completed':'Cancelled').replace(/>.*?</,'>'+(e.a?'Active':'Inactive')+'<')}</td><td><button class="btn-s" onclick="toggleEmp(${i})">${e.a?'Deactivate':'Reactivate'}</button></td></tr>`).join(''))}</div>`,
+'admin.comms':()=>`<h1>Announcements</h1><div class="panel"><form onsubmit="return announce(event)"><label>Title<input name="t" required></label><label>Audience<select name="a"><option>Employees</option><option>Customers</option><option>Everyone</option></select></label><label>Type<select name="k"><option value="">Update</option><option value="safe">Safety guideline</option><option value="urgent">Urgent notice</option></select></label><label style="flex-basis:100%">Message<textarea name="m" required></textarea></label><button class="btn-l">Send</button></form></div>${S.notices.map(n=>`<div class="item ${n.k}"><b>${esc(n.t)}</b><br>${esc(n.m)}</div>`).join('')}`,
+'admin.support':()=>`<h1>Support chat</h1><p class="sub">Conversation with Maria Santos.</p><div class="panel">${chatBox('staff')}</div>`};
+const bars=(t,rows)=>{const mx=Math.max(1,...rows.map(r=>r[1]));return `<div class="panel bars"><h2>${t}</h2>${rows.map(([k,v])=>`<div><span>${esc(k)}</span><i style="width:${v/mx*60}%"></i> ${v.toLocaleString()}</div>`).join('')}</div>`};
+function book(e){e.preventDefault();const f=e.target;if(new Date(f.at.value)<new Date())return say('Choose a time in the future.',1),false;S.bookings.push({id:S.nextId++,cust:ME,svc:f.svc.value,at:f.at.value,addr:f.addr.value,st:'Pending',tech:'',paid:0});say('Request sent. The team will confirm your booking.');return false}
+function setSt(id,st){const b=S.bookings.find(x=>x.id===id);if(['Approved','Scheduled','In Progress'].includes(st)&&b.tech&&clash(b.tech,b,b.at))return say('Double-booking blocked for '+b.tech+'.',1);b.st=st;say('Booking #'+id+' is now '+st+'. Customer notified.')}
+function assign(id,t){const b=S.bookings.find(x=>x.id===id);if(t&&clash(t,b,b.at))return say(t+' is already booked at that time.',1);b.tech=t;if(t&&b.st==='Approved')b.st='Scheduled';say(t?'Technician assigned and notified.':'Technician removed.')}
+function resched(id,v){const b=S.bookings.find(x=>x.id===id);if(b.tech&&clash(b.tech,b,v))return say(b.tech+' has a conflict at that time.',1);b.at=v;say('Schedule updated. Customer notified.')}
+function checkin(id){const rec=g=>{S.checkins.push({id,who:'Ana Cruz',when:new Date().toLocaleString(),gps:g});say('Checked in.')};if(!navigator.geolocation)return rec('GPS unavailable');navigator.geolocation.getCurrentPosition(p=>rec(p.coords.latitude.toFixed(5)+', '+p.coords.longitude.toFixed(5)),()=>rec('GPS permission denied'),{timeout:6000})}
+function report(e,id){e.preventDefault();const f=e.target;S.reports.push({id,s:f.s.value,e:f.e.value,c:f.c.value});if(f.e.value||f.c.value)S.chat.push({from:'staff',t:'[Admin alert] Job #'+id+' report: '+(f.e.value||f.c.value),at:'now'});say('Service report sent to admin.');return false}
+function addEmp(e){e.preventDefault();const f=e.target;S.employees.push({n:f.n.value,d:f.d.value,r:f.r.value,a:1});say('Account created. Temporary password must be changed at first sign-in.');return false}
+function toggleEmp(i){S.employees[i].a=S.employees[i].a?0:1;say('Account updated.')}
+function announce(e){e.preventDefault();const f=e.target;S.notices.unshift({t:f.t.value,m:f.m.value,k:f.k.value});say('Sent to '+f.a.value.toLowerCase()+'.');return false}
+function csv(){const rows=[['id','customer','service','when','status','paid']].concat(S.bookings.map(b=>[b.id,b.cust,b.svc,b.at,b.st,b.paid]));const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(rows.map(r=>r.join(',')).join('\n'));a.download='sunson-report.csv';a.click()}
+const allowedRoles=['customer','staff','admin'];
+[...$('#role').options].forEach(o=>{if(!allowedRoles.includes(o.value))o.remove()});
+$('#who').textContent='Signed in as '+USER.name;
+$('#role').addEventListener('change',e=>setRole(e.target.value));render();
+</script></body></html>

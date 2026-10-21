@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101b18">
+    <title>Join Sun Son Solar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Self-contained styles for the account page (matches the Workspace design). */
+        :root {
+            --bg: #f4f6f3;
+            --card: #fff;
+            --ink: #14211c;
+            --mut: #5d6e66;
+            --line: #dfe6e1;
+            --side: #101b18;
+            --lime: #c8f169;
+            --bad: #c0392b;
+            --eyebrow: #3d7a1f;
+            --note: #e6f3c8;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0b1411;
+                --card: #15221d;
+                --ink: #e9f1ec;
+                --mut: #9ab0a5;
+                --line: #243630;
+                --eyebrow: #c8f169;
+                --note: #22331b;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+        }
+
+        body.account-page {
+            background: var(--bg);
+            color: var(--ink);
+            font: 15px/1.5 "DM Sans", system-ui, sans-serif;
+            min-height: 100vh;
+        }
+
+        h1,
+        h2,
+        .brand {
+            font-family: Manrope, "DM Sans", system-ui, sans-serif;
+        }
+
+        .account-shell {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+            min-height: 100vh;
+        }
+
+        .account-visual {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 2.2rem 3rem;
+            color: #e9f1ec;
+            background: radial-gradient(circle at 20% 90%, rgba(200, 241, 105, .22), transparent 55%), linear-gradient(160deg, #101b18, #1c3a2e);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            color: inherit;
+            text-decoration: none;
+            font-weight: 800;
+            letter-spacing: .04em;
+        }
+
+        .brand b {
+            color: var(--lime);
+        }
+
+        .brand-mark {
+            display: block;
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .eyebrow {
+            color: var(--lime);
+            font-size: .74rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+        }
+
+        .account-story h1 {
+            font-size: clamp(2rem, 3.6vw, 3.2rem);
+            line-height: 1.1;
+            margin: .6rem 0 1rem;
+        }
+
+        .account-story em {
+            color: var(--lime);
+            font-style: normal;
+        }
+
+        .account-story p {
+            max-width: 420px;
+            color: #b9cbc2;
+            margin: 0 0 1.6rem;
+        }
+
+        .included-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: .7rem;
+        }
+
+        .included-list li {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+        }
+
+        .included-list span {
+            display: grid;
+            place-items: center;
+            width: 30px;
+            height: 30px;
+            border: 1px solid rgba(200, 241, 105, .5);
+            border-radius: 50%;
+            color: var(--lime);
+            font-size: .72rem;
+            font-weight: 700;
+        }
+
+        .account-visual-foot {
+            color: #7f9a8e;
+            font-size: .72rem;
+            letter-spacing: .14em;
+        }
+
+        .account-form-side {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2.2rem 1.5rem;
+        }
+
+        .account-form-wrap {
+            width: 100%;
+            max-width: 640px;
+        }
+
+        .account-topline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--mut);
+            font-size: .8rem;
+            letter-spacing: .06em;
+            margin-bottom: 1.6rem;
+        }
+
+        .account-topline a {
+            color: var(--mut);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .account-topline a:hover {
+            color: var(--ink);
+        }
+
+        .account-form-side .eyebrow {
+            color: var(--eyebrow);
+        }
+
+        .account-heading h2 {
+            font-size: 1.9rem;
+            margin: .3rem 0 .3rem;
+        }
+
+        .account-heading p {
+            margin: 0 0 1.2rem;
+            color: var(--mut);
+        }
+
+        .account-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-auto-flow: dense;
+            gap: 1rem;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 1.4rem;
+        }
+
+        .account-form.is-signin {
+            grid-template-columns: 1fr;
+        }
+
+        .is-signin .signup-only {
+            display: none;
+        }
+
+        .account-field {
+            display: flex;
+            flex-direction: column;
+            gap: .3rem;
+            min-width: 0;
+        }
+
+        .field-wide {
+            grid-column: 1 / -1;
+        }
+
+        .account-field label {
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--mut);
+        }
+
+        .account-field input,
+        .account-field select {
+            width: 100%;
+            font: inherit;
+            color: var(--ink);
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: .65rem .8rem;
+        }
+
+        .account-field input:focus,
+        .account-field select:focus {
+            outline: 0;
+            border-color: #6fae3b;
+            box-shadow: 0 0 0 3px rgba(200, 241, 105, .45);
+        }
+
+        .account-field .field-invalid {
+            border-color: var(--bad);
+        }
+
+        .field-error {
+            display: none;
+            color: var(--bad);
+            font-size: .78rem;
+        }
+
+        .field-error.show {
+            display: block;
+        }
+
+        .password-wrap {
+            position: relative;
+        }
+
+        .password-wrap input {
+            padding-right: 4.2rem;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: .5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 0;
+            background: none;
+            color: var(--mut);
+            font: inherit;
+            font-size: .8rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .account-status {
+            display: none;
+            grid-column: 1 / -1;
+            background: var(--note);
+            border-radius: 10px;
+            padding: .6rem .9rem;
+            font-size: .9rem;
+        }
+
+        .account-status.show {
+            display: block;
+        }
+
+        .account-submit {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: .5rem;
+            border: 0;
+            border-radius: 999px;
+            padding: .85rem 1.4rem;
+            object-fit: contain;
+            color: #101b18;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .account-submit:hover {
+            filter: brightness(.95);
+        }
+
+        .account-submit:disabled {
+            opacity: .6;
+            cursor: wait;
+        }
+
+        .account-switch {
+            text-align: center;
+            color: var(--mut);
+            margin: 1.1rem 0 0;
+        }
+
+        .account-switch a {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        @media (max-width: 900px) {
+            .account-shell {
+                grid-template-columns: 1fr;
+            }
+
+            .account-visual {
+                position: static;
+                height: auto;
+                gap: 1.4rem;
+                padding: 1.6rem;
+            }
+
+            .account-form {
+                grid-template-columns: 1fr;
+            }
+
+            .field-wide {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+<body class="account-page">
+    <main class="account-shell">
+        <section class="account-visual" aria-label="Explore Sun Son Solar">
+            <a class="brand" href="intro.html" aria-label="Sun Son Solar home">
+                <img class="brand-mark" src="Logo.png" alt=""><span class="brand-name">Son Sun Solar</span></a>
+            <div class="account-story">
+                <span class="eyebrow">A BRIGHTER WAY FORWARD</span>
+                <h1>Make room for a little more <em>sunshine.</em></h1>
+                <p>Explore Sun Son Solar and find a clearer path to the energy choices that fit your home and your life.</p>
+                <ul class="included-list">
+                    <li><span>01</span> Solar products and solutions</li>
+                    <li><span>02</span> Design and installation services</li>
+                    <li><span>03</span> Support for your solar journey</li>
+                </ul>
+            </div>
+            <span class="account-visual-foot">SUN SON SOLAR | POWERED BY POSSIBILITY</span>
+        </section>
+        <section class="account-form-side" aria-labelledby="account-title">
+            <div class="account-form-wrap">
+                <div class="account-topline"><a href="intro.html">Back to home</a><span>STEP <b>01</b> / 01</span></div>
+                <div class="account-heading">
+                    <span class="eyebrow" data-account-eyebrow>YOUR NEXT CHAPTER</span>
+                    <h2 id="account-title">Create your account</h2>
+                    <p data-account-intro>Start exploring a more thoughtful way to power your world.</p>
+                </div>
+                <form class="account-form" id="account-form" method="post" action="register" novalidate>
+                    <div class="account-field signup-only">
+                        <label for="first-name">First name</label>
+                        <input id="first-name" name="firstName" autocomplete="given-name" placeholder="Your first name">
+                        <span class="field-error"></span>
+                    </div>
+                    <div class="account-field signup-only">
+                        <label for="last-name">Last name</label>
+                        <input id="last-name" name="lastName" autocomplete="family-name" placeholder="Your last name">
+                        <span class="field-error"></span>
+                    </div>
+                    <div class="account-field signup-only">
+                        <label for="middle-name">Middle name</label>
+                        <input id="middle-name" name="middleName" autocomplete="additional-name" placeholder="Your middle name">
+                        <span class="field-error"></span>
+                    </div>
+                    <div class="account-field signup-only">
+                        <label for="birthday">Birthday</label>
+                        <input id="birthday" name="birthday" type="date" autocomplete="bday">
+                        <span class="field-error"></span>
+                    </div>
+                    <div class="account-field signup-only">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender">
+                            <option value="">Select your gender</option>
+                            <option value="female">Female</option>
+                            <option value="male">Male</option>
+                            <option value="non-binary">Non-binary</option>
+                            <option value="prefer-not-to-say">Prefer not to say</option>
+                        </select>
+                        <span class="field-error"></span>
+                    </div>
+                    <div class="account-field">
+                        <label for="email">Email address</label>
+                        <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+                        <span class="field-error"></span>
+                    </div>
+                    <div class="account-field signup-only">
+                        <label for="phone">Phone number</label>
+                        <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Your phone number">
+                        <span class="field-error"></span>
+                    </div>
+                    <div class="account-field field-wide signup-only">
+                        <label for="address">Address</label>
+                        <input id="address" name="address" autocomplete="street-address" placeholder="Street, city, region">
+                        <span class="field-error"></span>
+                    </div>
+                    <div class="account-field signup-only">
+                        <label for="username">Username</label>
+                        <input id="username" name="username" autocomplete="username" placeholder="Choose a username">
+                        <span class="field-error"></span>
+                    </div>
+                    <div class="account-field">
+                        <label for="password">Password</label>
+                        <div class="password-wrap">
+                            <input id="password" name="password" type="password" autocomplete="new-password" placeholder="At least 8 characters">
+                            <button class="password-toggle" type="button" data-password="password">Show</button>
+                        </div>
+                        <span class="field-error"></span>
+                    </div>
+                    <div class="account-field signup-only">
+                        <label for="confirm-password">Confirm password</label>
+                        <div class="password-wrap">
+                            <input id="confirm-password" name="confirmPassword" type="password" autocomplete="new-password" placeholder="Re-enter your password">
+                            <button class="password-toggle" type="button" data-password="confirm-password">Show</button>
+                        </div>
+                        <span class="field-error"></span>
+                    </div>
+                    <div class="account-status" role="status" aria-live="polite"></div>
+                    <button class="account-submit" type="submit"><span data-submit-label>Create account</span></button>
+                </form>
+                <p class="account-switch" data-demo-hint style="display:none">Demo logins (password <b>Sun12345!</b>): customer@sunson.demo | technician@sunson.demo | admin@sunson.demo</p>
+                <p class="account-switch"><span data-switch-prompt>Already have an account?</span> <a data-switch-link href="account.html?mode=signin">Sign in</a></p>
+            </div>
+        </section>
+    </main>
+    <script>
+        (function () {
+            // Where the PHP app lives, relative to this page. '.' works when this file sits in the
+            // CodeIgniter public/ folder (also inside a subfolder such as /myproject/public/).
+            var BACKEND = '.';
+            // false = stand-alone mode: sign in / register here, then go straight to the Workspace page.
+            // true  = original behaviour: post the form to the PHP backend.
+            var USE_BACKEND = false;
+            var WORKSPACE = new URL('Sun_Son_Solar_Workspace.html', window.location.href).href;
+            var params = new URLSearchParams(window.location.search);
+            var isSignin = params.get('mode') === 'signin';
+            var form = document.getElementById('account-form');
+            var fields = Array.from(form.querySelectorAll('input, select'));
+            var status = form.querySelector('.account-status');
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('birthday').max = today;
+
+            form.action = BACKEND + (isSignin ? '/login' : '/register');
+
+            // The PHP pages protect forms with a CSRF token. This static page copies the
+            // current token from the PHP account page so the POST is accepted.
+            function syncCsrf() {
+                return fetch(BACKEND + '/account?mode=' + (isSignin ? 'signin' : 'signup'), { credentials: 'same-origin' })
+                    .then(function (r) { return r.ok ? r.text() : ''; })
+                    .then(function (html) {
+                        if (!html) return;
+                        var doc = new DOMParser().parseFromString(html, 'text/html');
+                        var source = doc.querySelector('#account-form input[type="hidden"]');
+                        if (!source || !source.name) return;
+                        var target = form.querySelector('input[type="hidden"][data-csrf]');
+                        if (!target) {
+                            target = document.createElement('input');
+                            target.type = 'hidden';
+                            target.setAttribute('data-csrf', '');
+                            form.appendChild(target);
+                        }
+                        target.name = source.name;
+                        target.value = source.value;
+                    })
+                    .catch(function () { /* backend unreachable: the POST below will report it */ });
+            }
+            if (USE_BACKEND) syncCsrf();
+
+            if (isSignin) {
+                form.classList.add('is-signin');
+                document.title = 'Sign in | Sun Son Solar';
+                document.getElementById('account-title').textContent = 'Welcome back';
+                document.querySelector('[data-account-eyebrow]').textContent = 'GOOD TO SEE YOU AGAIN';
+                document.querySelector('[data-account-intro]').textContent = 'Sign in to continue your Sun Son Solar journey.';
+                document.querySelector('[data-submit-label]').textContent = 'Sign in';
+                document.querySelector('[data-switch-prompt]').textContent = 'New to Sun Son Solar?';
+                document.querySelector('[data-switch-link]').textContent = 'Create an account';
+                document.querySelector('[data-switch-link]').href = 'account.html?mode=signup';
+                document.getElementById('email').placeholder = 'Email address';
+                document.getElementById('email').autocomplete = 'username';
+                document.getElementById('password').autocomplete = 'current-password';
+                document.getElementById('password').placeholder = 'Your password';
+                document.querySelector('[data-demo-hint]').style.display = '';
+            }
+
+            function setError(input, message) {
+                var error = input.closest('.account-field').querySelector('.field-error');
+                input.classList.toggle('field-invalid', Boolean(message));
+                error.textContent = message || '';
+                error.classList.toggle('show', Boolean(message));
+            }
+
+            document.querySelectorAll('.password-toggle').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var input = document.getElementById(button.dataset.password);
+                    var visible = input.type === 'password';
+                    input.type = visible ? 'text' : 'password';
+                    button.textContent = visible ? 'Hide' : 'Show';
+                });
+            });
+
+            fields.forEach(function (input) {
+                input.addEventListener(input.tagName === 'SELECT' ? 'change' : 'input', function () { setError(input, ''); status.classList.remove('show'); });
+            });
+
+            // ---- Stand-alone sign in / register, then hand off to the Workspace ----
+            var ACC_KEY = 'sunson_accounts', SES_KEY = 'sunson_session';
+            function hash(s) {
+                if (window.crypto && crypto.subtle && window.TextEncoder) {
+                    return crypto.subtle.digest('SHA-256', new TextEncoder().encode('sunson:' + s)).then(function (b) {
+                        return Array.from(new Uint8Array(b)).map(function (x) { return x.toString(16).padStart(2, '0'); }).join('');
+                    });
+                }
+                var h = 5381;
+                for (var i = 0; i < s.length; i++) h = ((h * 33) ^ s.charCodeAt(i)) >>> 0;
+                return Promise.resolve('w' + h.toString(16));
+            }
+            function accounts() { try { return JSON.parse(localStorage.getItem(ACC_KEY) || '[]'); } catch (e) { return []; } }
+            function saveAccounts(a) { try { localStorage.setItem(ACC_KEY, JSON.stringify(a)); } catch (e) {} }
+            function seedDemo() {
+                return hash('Sun12345!').then(function (p) {
+                    var list = accounts();
+                    [['customer@sunson.demo', 'customer', 'Maria', 'Santos'], ['technician@sunson.demo', 'technician', 'Ana', 'Cruz'], ['admin@sunson.demo', 'admin', 'Lea', 'Ramos']].forEach(function (d) {
+                        if (!list.some(function (a) { return a.email === d[0]; })) list.push({ email: d[0], role: d[1], first: d[2], last: d[3], username: d[1], pass: p });
+                    });
+                    saveAccounts(list);
+                    return list;
+                });
+            }
+            function fail(message) {
+                form.querySelector('.account-submit').disabled = false;
+                status.textContent = message;
+                status.classList.add('show');
+            }
+            function enter(acc) {
+                var session = { name: acc.first + ' ' + acc.last, email: acc.email, role: acc.role };
+                try { localStorage.setItem(SES_KEY, JSON.stringify(session)); } catch (e) {}
+                // The session is also passed in the URL so it still works when files are opened straight from disk.
+                window.location.href = WORKSPACE + '#s=' + encodeURIComponent(JSON.stringify(session));
+            }
+            function localAuth() {
+                form.querySelector('.account-submit').disabled = true;
+                status.textContent = isSignin ? 'Signing you in...' : 'Creating your account...';
+                status.classList.add('show');
+                var email = document.getElementById('email').value.trim().toLowerCase();
+                var username = document.getElementById('username').value.trim().toLowerCase();
+                seedDemo().then(function (list) {
+                    return hash(document.getElementById('password').value).then(function (h) {
+                        if (isSignin) {
+                            var acc = list.filter(function (a) { return a.email === email && a.pass === h; })[0];
+                            if (!acc) return fail('Incorrect email or password.');
+                            return enter(acc);
+                        }
+                        if (list.some(function (a) { return a.email === email; })) return fail('An account with this email already exists. Try signing in.');
+                        if (list.some(function (a) { return (a.username || '').toLowerCase() === username; })) return fail('That username is taken. Please choose another.');
+                        var v = function (id) { return document.getElementById(id).value.trim(); };
+                        var created = { email: email, role: 'customer', first: v('first-name'), last: v('last-name'), middle: v('middle-name'), birthday: v('birthday'), gender: v('gender'), phone: v('phone'), address: v('address'), username: username, pass: h };
+                        list.push(created);
+                        saveAccounts(list);
+                        enter(created);
+                    });
+                }).catch(function () { fail('Something went wrong. Please try again.'); });
+            }
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                status.classList.remove('show');
+                var valid = true;
+                var required = isSignin ? ['email', 'password'] : ['first-name', 'last-name', 'birthday', 'gender', 'email', 'phone', 'address', 'username', 'password', 'confirm-password'];
+                required.forEach(function (id) {
+                    var input = document.getElementById(id);
+                    var value = input.value.trim();
+                    var message = value ? '' : 'This field is required.';
+                    if (id === 'email' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) message = 'Enter a valid email address.';
+                    if (id === 'phone' && value && !/^[0-9+()\-\s]{7,}$/.test(value)) message = 'Enter a valid phone number.';
+                    if (id === 'username' && value && value.length < 3) message = 'Use at least 3 characters.';
+                    if (!isSignin && id === 'password' && value && value.length < 8) message = 'Use at least 8 characters.';
+                    if (id === 'confirm-password' && value && value !== document.getElementById('password').value) message = 'Passwords do not match.';
+                    if (id === 'birthday' && value && value > today) message = 'Birthday cannot be in the future.';
+                    setError(input, message);
+                    if (message) valid = false;
+                });
+                var middleName = document.getElementById('middle-name');
+                if (!isSignin) {
+                    var middleValue = middleName.value.trim();
+                    var middleError = middleValue && !/^[A-Za-z .'-]+$/.test(middleValue) ? 'Use letters, spaces, apostrophes or hyphens only.' : '';
+                    setError(middleName, middleError);
+                    if (middleError) valid = false;
+                }
+                if (!valid) {
+                    var firstInvalid = form.querySelector('.field-invalid');
+                    if (firstInvalid) firstInvalid.focus();
+                    return;
+                }
+                if (!USE_BACKEND) { localAuth(); return; }
+                if (location.protocol === 'file:') {
+                    status.textContent = 'This page was opened as a file, so it cannot reach the PHP server. Start your local server and open it at an http://localhost address (for example http://localhost:8080/account.html).';
+                    status.classList.add('show');
+                    return;
+                }
+                var submitButton = form.querySelector('.account-submit');
+                submitButton.disabled = true;
+                status.textContent = isSignin ? 'Signing you in...' : 'Creating your account...';
+                status.classList.add('show');
+                syncCsrf().then(function () { form.submit(); });
+            });
+        }());
+    </script>
+</body>
+</html>
+
+
+
